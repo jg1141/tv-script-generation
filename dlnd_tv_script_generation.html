@@ -11955,7 +11955,70 @@ Barney_Gumble: Yeah, you should only drink to enhance your social skills.
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">problem_unittests</span> <span class="k">as</span> <span class="nn">tests</span>
 
-<span class="k">def</span> <span class="nf">create_lookup_tables_bad</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">create_lookup_tables</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create lookup tables for vocabulary</span>
+<span class="sd">    :param text: The text of tv scripts split into words</span>
+<span class="sd">    :return: A tuple of dicts (vocab_to_int, int_to_vocab)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># TODO: Implement Function</span>
+    <span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">Counter</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">vocab</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">counts</span><span class="o">.</span><span class="n">get</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">vocab_to_int</span> <span class="o">=</span> <span class="p">{</span><span class="n">word</span><span class="p">:</span> <span class="n">ii</span> <span class="k">for</span> <span class="n">ii</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">vocab</span><span class="p">)}</span>
+    <span class="n">int_to_vocab</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vocab_to_int</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">vocab_to_int</span><span class="p">,</span> <span class="n">int_to_vocab</span><span class="p">)</span>
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">DON&#39;T MODIFY ANYTHING IN THIS CELL THAT IS BELOW THIS LINE</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">tests</span><span class="o">.</span><span class="n">test_create_lookup_tables</span><span class="p">(</span><span class="n">create_lookup_tables</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Tests Passed
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Had-to-investigate-this-error-(and-it-is-now-answered)">Had to investigate this error (and it is now answered)<a class="anchor-link" href="#Had-to-investigate-this-error-(and-it-is-now-answered)">&#182;</a></h3><p>I had copied code from the lesson which had</p>
+
+<pre><code>enumerate(vocab, 1)</code></pre>
+<p>and that basically spoiled <a href="https://docs.google.com/spreadsheets/d/13C8TVCn2jNuUQ3RtjQyF940oQ038Gyd-RwQHNPWbSOg/edit#gid=608870057">my whole Saturday (see Week 9 column G)</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">problem_unittests</span> <span class="k">as</span> <span class="nn">tests</span>
+
+<span class="k">def</span> <span class="nf">create_lookup_tables_1</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create lookup tables for vocabulary</span>
 <span class="sd">    :param text: The text of tv scripts split into words</span>
@@ -11973,7 +12036,7 @@ Barney_Gumble: Yeah, you should only drink to enhance your social skills.
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">DON&#39;T MODIFY ANYTHING IN THIS CELL THAT IS BELOW THIS LINE</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="n">tests</span><span class="o">.</span><span class="n">test_create_lookup_tables</span><span class="p">(</span><span class="n">create_lookup_tables_bad</span><span class="p">)</span>
+<span class="n">tests</span><span class="o">.</span><span class="n">test_create_lookup_tables</span><span class="p">(</span><span class="n">create_lookup_tables_1</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -11999,13 +12062,13 @@ Barney_Gumble: Yeah, you should only drink to enhance your social skills.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">problem_unittests</span> <span class="k">as</span> <span class="nn">tests</span>
 
-<span class="k">def</span> <span class="nf">create_lookup_tables</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">create_lookup_tables_2</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create lookup tables for vocabulary</span>
 <span class="sd">    :param text: The text of tv scripts split into words</span>
@@ -12021,7 +12084,7 @@ Barney_Gumble: Yeah, you should only drink to enhance your social skills.
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">DON&#39;T MODIFY ANYTHING IN THIS CELL THAT IS BELOW THIS LINE</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="n">tests</span><span class="o">.</span><span class="n">test_create_lookup_tables</span><span class="p">(</span><span class="n">create_lookup_tables</span><span class="p">)</span>
+<span class="n">tests</span><span class="o">.</span><span class="n">test_create_lookup_tables</span><span class="p">(</span><span class="n">create_lookup_tables_2</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12071,7 +12134,7 @@ Barney_Gumble: Yeah, you should only drink to enhance your social skills.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">short_words</span> <span class="o">=</span> <span class="p">{}</span>
@@ -12096,7 +12159,7 @@ Barney_Gumble: Yeah, you should only drink to enhance your social skills.
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>{&#39;)&#39;: &#39;&#39;, &#39;£&#39;: &#39;&#39;, &#34;&#39;&#34;: &#39;&#39;, &#39;¨&#39;: &#39;&#39;, &#39;/&#39;: &#39;&#39;, &#39;\n&#39;: &#39;&#39;, &#39;&amp;&#39;: &#39;&#39;, &#39; &#39;: &#39;&#39;, &#39;-&#39;: &#39;&#39;, &#39;_&#39;: &#39;&#39;, &#39;;&#39;: &#39;&#39;, &#39;¼&#39;: &#39;&#39;, &#39;$&#39;: &#39;&#39;, &#39;%&#39;: &#39;&#39;, &#39;&#34;&#39;: &#39;&#39;, &#39;(&#39;: &#39;&#39;, &#39;!&#39;: &#39;&#39;, &#39;#&#39;: &#39;&#39;, &#39;.&#39;: &#39;&#39;, &#39;Ã&#39;: &#39;&#39;, &#39;³&#39;: &#39;&#39;, &#39;?&#39;: &#39;&#39;, &#39;©&#39;: &#39;&#39;, &#39;€&#39;: &#39;&#39;, &#39;:&#39;: &#39;&#39;, &#39;¤&#39;: &#39;&#39;, &#39;\xa0&#39;: &#39;&#39;, &#39;,&#39;: &#39;&#39;}
+<pre>{&#39;¨&#39;: &#39;&#39;, &#39;$&#39;: &#39;&#39;, &#39;³&#39;: &#39;&#39;, &#39;-&#39;: &#39;&#39;, &#39;,&#39;: &#39;&#39;, &#39;£&#39;: &#39;&#39;, &#39;%&#39;: &#39;&#39;, &#39;.&#39;: &#39;&#39;, &#39;:&#39;: &#39;&#39;, &#39; &#39;: &#39;&#39;, &#39;_&#39;: &#39;&#39;, &#39;)&#39;: &#39;&#39;, &#39;&#34;&#39;: &#39;&#39;, &#39;&amp;&#39;: &#39;&#39;, &#39;?&#39;: &#39;&#39;, &#39;¼&#39;: &#39;&#39;, &#39;\n&#39;: &#39;&#39;, &#39;\xa0&#39;: &#39;&#39;, &#39;©&#39;: &#39;&#39;, &#39;Ã&#39;: &#39;&#39;, &#39;€&#39;: &#39;&#39;, &#39;(&#39;: &#39;&#39;, &#39;;&#39;: &#39;&#39;, &#39;¤&#39;: &#39;&#39;, &#39;!&#39;: &#39;&#39;, &#34;&#39;&#34;: &#39;&#39;, &#39;#&#39;: &#39;&#39;, &#39;/&#39;: &#39;&#39;}
 </pre>
 </div>
 </div>
@@ -12107,7 +12170,7 @@ Barney_Gumble: Yeah, you should only drink to enhance your social skills.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">token_lookup</span><span class="p">():</span>
@@ -12185,6 +12248,303 @@ Barney_Gumble: Yeah, you should only drink to enhance your social skills.
 </div>
 
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load Dataset from File</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">input_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">input_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">data</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span>
+
+<span class="n">token_dict</span> <span class="o">=</span> <span class="n">token_lookup</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">token_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s1">&#39; </span><span class="si">{}</span><span class="s1"> &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">token</span><span class="p">))</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
+<span class="n">vocab_to_int</span><span class="p">,</span> <span class="n">int_to_vocab</span> <span class="o">=</span> <span class="n">create_lookup_tables</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">vocab_to_int_1</span><span class="p">,</span> <span class="n">int_to_vocab_1</span> <span class="o">=</span> <span class="n">create_lookup_tables_1</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">vocab_to_int_2</span><span class="p">,</span> <span class="n">int_to_vocab_2</span> <span class="o">=</span> <span class="n">create_lookup_tables_2</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="What-is-so-bad-about-create_lookup_tables_1?">What is so bad about create_lookup_tables_1?<a class="anchor-link" href="#What-is-so-bad-about-create_lookup_tables_1?">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">vocab_to_int_2</span> <span class="o">==</span> <span class="n">vocab_to_int</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[11]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>False</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">vocab_to_int_2</span><span class="o">.</span><span class="n">items</span><span class="p">())[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[12]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[(&#34;d&#39;&#34;, 0),
+ (&#39;ducked&#39;, 3335),
+ (&#39;dealie&#39;, 1),
+ (&#39;backwards&#39;, 3337),
+ (&#39;scratcher&#39;, 2)]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">vocab_to_int</span><span class="o">.</span><span class="n">items</span><span class="p">())[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[13]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[(&#34;d&#39;&#34;, 2898),
+ (&#39;ducked&#39;, 2899),
+ (&#39;dealie&#39;, 2900),
+ (&#39;backwards&#39;, 1440),
+ (&#39;yammering&#39;, 6442)]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">int_to_vocab_2</span> <span class="o">==</span> <span class="n">int_to_vocab</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[14]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>False</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">int_to_vocab_2</span><span class="o">.</span><span class="n">items</span><span class="p">())[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[15]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[(0, &#34;d&#39;&#34;), (1, &#39;dealie&#39;), (2, &#39;scratcher&#39;), (3, &#39;covering&#39;), (4, &#39;loved&#39;)]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">int_to_vocab</span><span class="o">.</span><span class="n">items</span><span class="p">())[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[16]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[(0, &#39;||period||&#39;),
+ (1, &#39;||new_line||&#39;),
+ (2, &#39;||comma||&#39;),
+ (3, &#39;||left_paren||&#39;),
+ (4, &#39;||right_paren||&#39;)]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Answer:-create_lookup_tables_1-does-not-start-at-0">Answer: create_lookup_tables_1 does not start at 0<a class="anchor-link" href="#Answer:-create_lookup_tables_1-does-not-start-at-0">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">int_to_vocab_1</span><span class="o">.</span><span class="n">items</span><span class="p">())[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[17]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[(1, &#39;||period||&#39;),
+ (2, &#39;||new_line||&#39;),
+ (3, &#39;||comma||&#39;),
+ (4, &#39;||left_paren||&#39;),
+ (5, &#39;||right_paren||&#39;)]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12197,7 +12557,7 @@ Barney_Gumble: Yeah, you should only drink to enhance your social skills.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -12224,7 +12584,7 @@ Barney_Gumble: Yeah, you should only drink to enhance your social skills.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -12238,322 +12598,6 @@ Barney_Gumble: Yeah, you should only drink to enhance your social skills.
 </pre></div>
 
 </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="What-is-so-bad-about-create_lookup_tables_bad?">What is so bad about create_lookup_tables_bad?<a class="anchor-link" href="#What-is-so-bad-about-create_lookup_tables_bad?">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">preprocess_and_save_data_bad</span><span class="p">(</span><span class="n">dataset_path</span><span class="p">,</span> <span class="n">token_lookup</span><span class="p">,</span> <span class="n">create_lookup_tables_bad</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Preprocess Text Data</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">text</span> <span class="o">=</span> <span class="n">helper</span><span class="o">.</span><span class="n">load_data</span><span class="p">(</span><span class="n">dataset_path</span><span class="p">)</span>
-
-    <span class="n">token_dict</span> <span class="o">=</span> <span class="n">token_lookup</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">token_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s1">&#39; </span><span class="si">{}</span><span class="s1"> &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">token</span><span class="p">))</span>
-
-    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-
-    <span class="n">vocab_to_int_bad</span><span class="p">,</span> <span class="n">int_to_vocab_bad</span> <span class="o">=</span> <span class="n">create_lookup_tables_bad</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-    <span class="n">int_text_bad</span> <span class="o">=</span> <span class="p">[</span><span class="n">vocab_to_int_bad</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">text</span><span class="p">]</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">int_text</span><span class="p">,</span> <span class="n">vocab_to_int</span><span class="p">,</span> <span class="n">int_to_vocab</span><span class="p">,</span> <span class="n">token_dict</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Results-are-the-same??">Results are the same??<a class="anchor-link" href="#Results-are-the-same??">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="n">int_text_bad</span><span class="p">,</span> <span class="n">vocab_to_int_bad</span><span class="p">,</span> <span class="n">int_to_vocab_bad</span><span class="p">,</span> <span class="n">token_dict_bad</span><span class="p">)</span> <span class="o">=</span> \
-  <span class="n">preprocess_and_save_data_bad</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">token_lookup</span><span class="p">,</span> <span class="n">create_lookup_tables_bad</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">vocab_to_int_bad</span> <span class="o">==</span> <span class="n">vocab_to_int</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[12]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>True</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">vocab_to_int_bad</span><span class="o">.</span><span class="n">items</span><span class="p">())[:</span><span class="mi">5</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[13]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[(&#39;supposed&#39;, 0),
- (&#39;boring&#39;, 1),
- (&#39;play&#39;, 1124),
- (&#39;wikipedia&#39;, 2),
- (&#34;world&#39;s&#34;, 3)]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">vocab_to_int</span><span class="o">.</span><span class="n">items</span><span class="p">())[:</span><span class="mi">5</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[14]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[(&#39;supposed&#39;, 0),
- (&#39;boring&#39;, 1),
- (&#39;play&#39;, 1124),
- (&#39;wikipedia&#39;, 2),
- (&#34;world&#39;s&#34;, 3)]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">int_to_vocab_bad</span> <span class="o">==</span> <span class="n">int_to_vocab</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[15]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>True</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">int_text_bad</span> <span class="o">==</span> <span class="n">int_text</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[16]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>True</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">int_text_bad</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[17]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[25, 3209, 2336, 902, 4236, 3016, 4077, 174, 4011, 1388]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">int_text</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[18]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[25, 3209, 2336, 902, 4236, 3016, 4077, 174, 4011, 1388]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">token_dict_bad</span> <span class="o">==</span> <span class="n">token_dict</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[19]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>True</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -12580,21 +12624,7 @@ Barney_Gumble: Yeah, you should only drink to enhance your social skills.
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[25,
- 3209,
- 2336,
- 902,
- 4236,
- 3016,
- 4077,
- 174,
- 4011,
- 1388,
- 5762,
- 6129,
- 3490,
- 1388,
- 1201]</pre>
+<pre>[6585, 448, 6459, 6663, 2467, 1588, 1530, 1315, 1756, 0, 37, 5097, 2206, 0, 1]</pre>
 </div>
 
 </div>
@@ -12653,22 +12683,7 @@ Barney_Gumble: Yeah, you should only drink to enhance your social skills.
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[2523,
- 3970,
- 1634,
- 2877,
- 1088,
- 5440,
- 1964,
- 1388,
- 6537,
- 1363,
- 310,
- 1155,
- 2758,
- 2610,
- 1388,
- 1201]</pre>
+<pre>[9, 3, 121, 178, 4, 177, 338, 0, 142, 5, 4867, 536, 13, 151, 0, 1]</pre>
 </div>
 
 </div>
@@ -13730,105 +13745,105 @@ words_missed      80
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Epoch   0 Batch    0/29   train_loss = 8.822
-Epoch   1 Batch    0/29   train_loss = 6.616
-Epoch   2 Batch    0/29   train_loss = 6.137
-Epoch   3 Batch    0/29   train_loss = 5.962
-Epoch   4 Batch    0/29   train_loss = 5.764
-Epoch   5 Batch    0/29   train_loss = 5.446
-Epoch   6 Batch    0/29   train_loss = 5.070
-Epoch   7 Batch    0/29   train_loss = 4.779
-Epoch   8 Batch    0/29   train_loss = 4.611
-Epoch   9 Batch    0/29   train_loss = 4.441
-Epoch  10 Batch    0/29   train_loss = 4.305
-Epoch  11 Batch    0/29   train_loss = 4.188
-Epoch  12 Batch    0/29   train_loss = 4.106
-Epoch  13 Batch    0/29   train_loss = 3.981
-Epoch  14 Batch    0/29   train_loss = 3.882
-Epoch  15 Batch    0/29   train_loss = 3.761
-Epoch  16 Batch    0/29   train_loss = 3.670
-Epoch  17 Batch    0/29   train_loss = 3.562
-Epoch  18 Batch    0/29   train_loss = 3.482
-Epoch  19 Batch    0/29   train_loss = 3.367
-Epoch  20 Batch    0/29   train_loss = 3.291
-Epoch  21 Batch    0/29   train_loss = 3.181
-Epoch  22 Batch    0/29   train_loss = 3.083
-Epoch  23 Batch    0/29   train_loss = 3.016
-Epoch  24 Batch    0/29   train_loss = 2.954
-Epoch  25 Batch    0/29   train_loss = 2.888
-Epoch  26 Batch    0/29   train_loss = 2.801
-Epoch  27 Batch    0/29   train_loss = 2.735
-Epoch  28 Batch    0/29   train_loss = 2.703
-Epoch  29 Batch    0/29   train_loss = 2.618
-Epoch  30 Batch    0/29   train_loss = 2.473
-Epoch  31 Batch    0/29   train_loss = 2.455
-Epoch  32 Batch    0/29   train_loss = 2.407
-Epoch  33 Batch    0/29   train_loss = 2.282
-Epoch  34 Batch    0/29   train_loss = 2.193
-Epoch  35 Batch    0/29   train_loss = 2.106
-Epoch  36 Batch    0/29   train_loss = 2.012
-Epoch  37 Batch    0/29   train_loss = 1.943
-Epoch  38 Batch    0/29   train_loss = 1.863
-Epoch  39 Batch    0/29   train_loss = 1.787
-Epoch  40 Batch    0/29   train_loss = 1.720
-Epoch  41 Batch    0/29   train_loss = 1.653
-Epoch  42 Batch    0/29   train_loss = 1.595
-Epoch  43 Batch    0/29   train_loss = 1.536
-Epoch  44 Batch    0/29   train_loss = 1.499
-Epoch  45 Batch    0/29   train_loss = 1.448
-Epoch  46 Batch    0/29   train_loss = 1.405
-Epoch  47 Batch    0/29   train_loss = 1.385
-Epoch  48 Batch    0/29   train_loss = 1.363
-Epoch  49 Batch    0/29   train_loss = 1.350
-Epoch  50 Batch    0/29   train_loss = 1.319
-Epoch  51 Batch    0/29   train_loss = 1.254
-Epoch  52 Batch    0/29   train_loss = 1.192
-Epoch  53 Batch    0/29   train_loss = 1.164
-Epoch  54 Batch    0/29   train_loss = 1.118
-Epoch  55 Batch    0/29   train_loss = 1.068
-Epoch  56 Batch    0/29   train_loss = 1.016
-Epoch  57 Batch    0/29   train_loss = 0.992
-Epoch  58 Batch    0/29   train_loss = 0.958
-Epoch  59 Batch    0/29   train_loss = 0.948
-Epoch  60 Batch    0/29   train_loss = 0.911
-Epoch  61 Batch    0/29   train_loss = 0.880
-Epoch  62 Batch    0/29   train_loss = 0.862
-Epoch  63 Batch    0/29   train_loss = 0.838
-Epoch  64 Batch    0/29   train_loss = 0.830
-Epoch  65 Batch    0/29   train_loss = 0.802
-Epoch  66 Batch    0/29   train_loss = 0.779
-Epoch  67 Batch    0/29   train_loss = 0.760
-Epoch  68 Batch    0/29   train_loss = 0.740
-Epoch  69 Batch    0/29   train_loss = 0.705
-Epoch  70 Batch    0/29   train_loss = 0.671
-Epoch  71 Batch    0/29   train_loss = 0.650
-Epoch  72 Batch    0/29   train_loss = 0.636
-Epoch  73 Batch    0/29   train_loss = 0.603
-Epoch  74 Batch    0/29   train_loss = 0.578
-Epoch  75 Batch    0/29   train_loss = 0.565
-Epoch  76 Batch    0/29   train_loss = 0.542
-Epoch  77 Batch    0/29   train_loss = 0.524
-Epoch  78 Batch    0/29   train_loss = 0.493
-Epoch  79 Batch    0/29   train_loss = 0.475
-Epoch  80 Batch    0/29   train_loss = 0.463
-Epoch  81 Batch    0/29   train_loss = 0.446
-Epoch  82 Batch    0/29   train_loss = 0.433
-Epoch  83 Batch    0/29   train_loss = 0.428
-Epoch  84 Batch    0/29   train_loss = 0.412
-Epoch  85 Batch    0/29   train_loss = 0.401
-Epoch  86 Batch    0/29   train_loss = 0.393
-Epoch  87 Batch    0/29   train_loss = 0.384
-Epoch  88 Batch    0/29   train_loss = 0.382
-Epoch  89 Batch    0/29   train_loss = 0.365
-Epoch  90 Batch    0/29   train_loss = 0.356
-Epoch  91 Batch    0/29   train_loss = 0.342
-Epoch  92 Batch    0/29   train_loss = 0.333
-Epoch  93 Batch    0/29   train_loss = 0.327
-Epoch  94 Batch    0/29   train_loss = 0.317
-Epoch  95 Batch    0/29   train_loss = 0.317
-Epoch  96 Batch    0/29   train_loss = 0.315
-Epoch  97 Batch    0/29   train_loss = 0.315
-Epoch  98 Batch    0/29   train_loss = 0.309
-Epoch  99 Batch    0/29   train_loss = 0.304
+Epoch   1 Batch    0/29   train_loss = 6.623
+Epoch   2 Batch    0/29   train_loss = 6.205
+Epoch   3 Batch    0/29   train_loss = 6.101
+Epoch   4 Batch    0/29   train_loss = 5.813
+Epoch   5 Batch    0/29   train_loss = 5.180
+Epoch   6 Batch    0/29   train_loss = 4.848
+Epoch   7 Batch    0/29   train_loss = 4.672
+Epoch   8 Batch    0/29   train_loss = 4.496
+Epoch   9 Batch    0/29   train_loss = 4.355
+Epoch  10 Batch    0/29   train_loss = 4.246
+Epoch  11 Batch    0/29   train_loss = 4.131
+Epoch  12 Batch    0/29   train_loss = 4.016
+Epoch  13 Batch    0/29   train_loss = 3.914
+Epoch  14 Batch    0/29   train_loss = 3.811
+Epoch  15 Batch    0/29   train_loss = 3.712
+Epoch  16 Batch    0/29   train_loss = 3.620
+Epoch  17 Batch    0/29   train_loss = 3.511
+Epoch  18 Batch    0/29   train_loss = 3.432
+Epoch  19 Batch    0/29   train_loss = 3.345
+Epoch  20 Batch    0/29   train_loss = 3.245
+Epoch  21 Batch    0/29   train_loss = 3.171
+Epoch  22 Batch    0/29   train_loss = 3.101
+Epoch  23 Batch    0/29   train_loss = 3.010
+Epoch  24 Batch    0/29   train_loss = 2.888
+Epoch  25 Batch    0/29   train_loss = 2.826
+Epoch  26 Batch    0/29   train_loss = 2.726
+Epoch  27 Batch    0/29   train_loss = 2.635
+Epoch  28 Batch    0/29   train_loss = 2.534
+Epoch  29 Batch    0/29   train_loss = 2.462
+Epoch  30 Batch    0/29   train_loss = 2.357
+Epoch  31 Batch    0/29   train_loss = 2.300
+Epoch  32 Batch    0/29   train_loss = 2.207
+Epoch  33 Batch    0/29   train_loss = 2.171
+Epoch  34 Batch    0/29   train_loss = 2.133
+Epoch  35 Batch    0/29   train_loss = 2.046
+Epoch  36 Batch    0/29   train_loss = 1.974
+Epoch  37 Batch    0/29   train_loss = 1.931
+Epoch  38 Batch    0/29   train_loss = 1.870
+Epoch  39 Batch    0/29   train_loss = 1.812
+Epoch  40 Batch    0/29   train_loss = 1.769
+Epoch  41 Batch    0/29   train_loss = 1.720
+Epoch  42 Batch    0/29   train_loss = 1.668
+Epoch  43 Batch    0/29   train_loss = 1.624
+Epoch  44 Batch    0/29   train_loss = 1.567
+Epoch  45 Batch    0/29   train_loss = 1.517
+Epoch  46 Batch    0/29   train_loss = 1.466
+Epoch  47 Batch    0/29   train_loss = 1.442
+Epoch  48 Batch    0/29   train_loss = 1.396
+Epoch  49 Batch    0/29   train_loss = 1.389
+Epoch  50 Batch    0/29   train_loss = 1.359
+Epoch  51 Batch    0/29   train_loss = 1.306
+Epoch  52 Batch    0/29   train_loss = 1.264
+Epoch  53 Batch    0/29   train_loss = 1.212
+Epoch  54 Batch    0/29   train_loss = 1.190
+Epoch  55 Batch    0/29   train_loss = 1.140
+Epoch  56 Batch    0/29   train_loss = 1.094
+Epoch  57 Batch    0/29   train_loss = 1.058
+Epoch  58 Batch    0/29   train_loss = 1.038
+Epoch  59 Batch    0/29   train_loss = 1.015
+Epoch  60 Batch    0/29   train_loss = 0.968
+Epoch  61 Batch    0/29   train_loss = 0.932
+Epoch  62 Batch    0/29   train_loss = 0.926
+Epoch  63 Batch    0/29   train_loss = 0.914
+Epoch  64 Batch    0/29   train_loss = 0.876
+Epoch  65 Batch    0/29   train_loss = 0.840
+Epoch  66 Batch    0/29   train_loss = 0.830
+Epoch  67 Batch    0/29   train_loss = 0.808
+Epoch  68 Batch    0/29   train_loss = 0.750
+Epoch  69 Batch    0/29   train_loss = 0.729
+Epoch  70 Batch    0/29   train_loss = 0.705
+Epoch  71 Batch    0/29   train_loss = 0.659
+Epoch  72 Batch    0/29   train_loss = 0.649
+Epoch  73 Batch    0/29   train_loss = 0.635
+Epoch  74 Batch    0/29   train_loss = 0.601
+Epoch  75 Batch    0/29   train_loss = 0.572
+Epoch  76 Batch    0/29   train_loss = 0.552
+Epoch  77 Batch    0/29   train_loss = 0.531
+Epoch  78 Batch    0/29   train_loss = 0.531
+Epoch  79 Batch    0/29   train_loss = 0.509
+Epoch  80 Batch    0/29   train_loss = 0.485
+Epoch  81 Batch    0/29   train_loss = 0.473
+Epoch  82 Batch    0/29   train_loss = 0.445
+Epoch  83 Batch    0/29   train_loss = 0.427
+Epoch  84 Batch    0/29   train_loss = 0.432
+Epoch  85 Batch    0/29   train_loss = 0.427
+Epoch  86 Batch    0/29   train_loss = 0.410
+Epoch  87 Batch    0/29   train_loss = 0.396
+Epoch  88 Batch    0/29   train_loss = 0.389
+Epoch  89 Batch    0/29   train_loss = 0.374
+Epoch  90 Batch    0/29   train_loss = 0.359
+Epoch  91 Batch    0/29   train_loss = 0.346
+Epoch  92 Batch    0/29   train_loss = 0.336
+Epoch  93 Batch    0/29   train_loss = 0.333
+Epoch  94 Batch    0/29   train_loss = 0.330
+Epoch  95 Batch    0/29   train_loss = 0.323
+Epoch  96 Batch    0/29   train_loss = 0.314
+Epoch  97 Batch    0/29   train_loss = 0.308
+Epoch  98 Batch    0/29   train_loss = 0.304
+Epoch  99 Batch    0/29   train_loss = 0.292
 Model Trained and Saved
 </pre>
 </div>
@@ -14106,23 +14121,17 @@ Model Trained and Saved
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>moe_szyslak:(sad, homer, fritz, points to phone) so uh, your new year&#39;s resolution was to learn latin.
-moe_szyslak: what you think the god!
-homer_simpson:(sheepish) well, well, sir, this is very one of his bad boy, when he could watch.
-
-
-lenny_leonard: yes, time too.
-
-
-lenny_leonard: no doubt you&#39;re the black eye? ooh, sure, am i ever get home.
-moe_szyslak: no, it was serious. the good you&#34; here ya.
-moe_szyslak: thanks, my friend!
-moe_szyslak: but she never go home and you makes me for me to my, there!
-homer_simpson: okay, i just had the money!
-homer_simpson: to...
-marge_simpson: this is the big idea up.
-carl_carlson:(big smithers, slightly concerned) it&#39;s called it, moe. smelly. a ain&#39;t day i can go home here as little wife!
-moe_szyslak:(lying) no, no. i&#39;ll tell you look around! just the tipsy wearing his
+<pre>moe_szyslak: oh, the heat&#39;s been on since them bush girls were in here.
+homer_simpson: since i think about time they saw this.
+homer_simpson: oh, moe. maybe i&#39;ve learned your best drink it is... i couldn&#39;t you find the hand for a couple.
+moe_szyslak:(to moe) hey, homer, if you got it,&#34; i aren&#39;t a glass up to my guy who shows up in the bar.
+moe_szyslak:(laughs) oh marge, i can&#39;t take that out?
+lenny_leonard: that&#39;s the best break, the low...
+moe_szyslak: barney, look! that was the longest gets every beer / and city third the house!
+homer_simpson: hey, homer. here i come up, homer. i am changing the other day and water?
+moe_szyslak: hey, you don&#39;t have to wait my new guy i ever. who am i got a big idea?
+moe_szyslak:(starts to watch me go to the bar and die. you know, when they said no girl somewhere!
+ken:
 </pre>
 </div>
 </div>
